@@ -10,11 +10,29 @@ It turns out I have to find a workaround. This way doesn't have the accuracy as 
 
 ## Install
 1. Download or simple pipe the date-sync file to `/etc/network/if-up.d/` folder.
-> ```sudo wget -O /etc/network/if-up.d/date-sync https://raw.githubusercontent.com/justsoft/jetson-nano-date-sync/master/date-sync```
+
+```bash
+sudo wget -O /etc/network/if-up.d/date-sync https://raw.githubusercontent.com/justsoft/jetson-nano-date-sync/master/date-sync
+```
+
 2. Change (optional) the URL `http://bing.com` to a fast and reliable one
-> ```sudo vi /etc/network/if-up.d/date-sync```
-3. Add excutable attribute to the `/etc/network/if-up.d/date-sync`:
-> ```sudo chmod +x /etc/network/if-up.d/date-sync```
+
+```bash
+sudo vim /etc/network/if-up.d/date-sync
+```
+
+3. Change year in the last if statement to match your year
+
+```bash
+sudo vim /etc/network/if-up.d/date-sync
+# if [ ... 2020 ]
+```
+
+4. Add excutable attribute to the `/etc/network/if-up.d/date-sync`:
+
+```bash
+sudo chmod +x /etc/network/if-up.d/date-sync
+```
 
 # Raspbian
 If raspbian can not synchronize it's clock with internet time server, this workaround can help you. Let's check how the timedatectl tells:
